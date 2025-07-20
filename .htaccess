@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /
+
+# Set the default page
+DirectoryIndex index.html
+
+# Rewrite clean URLs to their .html file counterparts
+RewriteRule ^Bewerbung/?$ index.html [NC,L]
+RewriteRule ^Impressum/?$ Impressum.html [NC,L]
+RewriteRule ^Datenschutz/?$ Datenschutz.html [NC,L]
+
+# Remove .html extension from URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/?$ $1.html [L]
